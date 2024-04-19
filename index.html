@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expense tracker</title>
+</head>
+<body>
+<h1>Express Tracker</h1>
+<div>
+    <article>
+        <header>
+            <h2>
+                Your budget:
+            </h2>
+        </header>
+        <p>Date:</p>
+    </article>
+    <div>
+        <div>
+            <div>
+                <label for="type"></label>
+                <select id="type">
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+            </div>
+            <div>
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="category">---Choose the category---</option>
+                    <option value="food">Food</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="taxes">Taxes</option>
+                    <option value="rent">Rent</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="sum">Sum:</label>
+                <input id="sum" type="text">
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <input id="date" type="date">
+            </div>
+            <div>
+                <button type="submit">Add</button>
+            </div>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Sum</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
