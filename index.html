@@ -5,61 +5,68 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Expense tracker</title>
 </head>
 <body>
     <h1>Express Tracker</h1>
     <section class="content">
-        <header>
-            <div>
-                <h5>Your balance:</h5>
-                <span id="balance">$0.00</span>
-            </div>
-            <div>
-                <h5>Income:</h5>
-                <span id="income">$0.00</span>
-            </div>
-            <div>
-                <h5>Expense:</h5>
-                <span id="expense">$0.00</span>
-            </div>
-        </header>
-        <hr>
-        <div>
-            <div class="options">
-                <div class="input__type">
-                    <label for="type">Type</label>
-                    <select id="type">
-                        <option value="expense">Expense</option>
-                        <option value="income">Income</option>
-                    </select>
+        <div class="article">
+            <header>
+                <div class="card">
+                    <div>
+                        <h5>Your balance:</h5>
+                        <span id="balance">$0.00</span>
+                    </div>
+                    <div>
+                        <h5>Income:</h5>
+                        <span id="income">$0.00</span>
+                    </div>
+                    <div>
+                        <h5>Expense:</h5>
+                        <span id="expense">$0.00</span>
+                    </div>
                 </div>
-                <div class="input__category">
-                    <label for="category">Category</label>
-                    <select id="category">
-                        <option value="category">---Choose the category---</option>
-                        <option value="food">Food</option>
-                        <option value="entertainment">Entertainment</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="taxes">Taxes</option>
-                        <option value="rent">Rent</option>
-                        <option value="insurance">Insurance</option>
-                        <option value="other">Other</option>
-                    </select>
+            </header>
+            <hr>
+                <div class="options">
+                    <div class="input__type">
+                        <label for="type">Type</label>
+                        <select id="type">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+                    <div class="input__category">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="category">---Choose the category---</option>
+                            <option value="food">Food</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="taxes">Taxes</option>
+                            <option value="rent">Rent</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input__sum">
+                        <label for="sum">Sum</label>
+                        <input id="sum" type="text">
+                    </div>
+                    <div class="input__date">
+                        <label for="date">Date</label>
+                        <input id="date" type="date">
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Add</button>
+                    </div>
                 </div>
-                <div class="input__sum">
-                    <label for="sum">Sum</label>
-                    <input id="sum" type="text">
-                </div>
-                <div class="input__date">
-                    <label for="date">Date</label>
-                    <input id="date" type="date">
-                </div>
-                <div class="btn">
-                    <button type="submit">Add</button>
-                </div>
-            </div>
-            <table>
+        </div>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Type</th>
