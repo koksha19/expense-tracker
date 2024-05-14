@@ -9,25 +9,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+    <script type="module" src="expense_tracker/tracker.js"></script>
     <title>Expense tracker</title>
 </head>
 <body>
-    <h1>Express Tracker</h1>
+    <h1>Expense Tracker</h1>
     <section class="content">
         <div class="article">
             <header>
                 <div class="card">
                     <div>
                         <h5>Your balance:</h5>
-                        <span id="balance">$0.00</span>
+                        <span id="balance"></span>
                     </div>
                     <div>
                         <h5>Income:</h5>
-                        <span id="income">$0.00</span>
+                        <span id="income"></span>
                     </div>
                     <div>
                         <h5>Expense:</h5>
-                        <span id="expense">$0.00</span>
+                        <span id="expense"></span>
                     </div>
                 </div>
             </header>
@@ -73,11 +75,10 @@
                 <th>Category</th>
                 <th>Sum</th>
                 <th>Date</th>
+                <th>Delete</th>
             </tr>
             </thead>
-            <tbody>
-
-            </tbody>
+            <tbody class="transactions"></tbody>
         </table>
     </section>
 </body>
