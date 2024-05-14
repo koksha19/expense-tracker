@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="app.js"></script>
-    <script type="module" src="expense_tracker/tracker.js"></script>
     <title>Expense tracker</title>
 </head>
 <body>
@@ -46,6 +45,7 @@
                         <label for="category">Category</label>
                         <select id="category">
                             <option value="category">---Choose the category---</option>
+                            <option value="salary">Salary</option>
                             <option value="food">Food</option>
                             <option value="entertainment">Entertainment</option>
                             <option value="healthcare">Healthcare</option>
@@ -71,10 +71,10 @@
         <table class="table">
             <thead>
             <tr>
+                <th>Date</th>
                 <th>Type</th>
                 <th>Category</th>
                 <th>Sum</th>
-                <th>Date</th>
                 <th>Delete</th>
             </tr>
             </thead>
