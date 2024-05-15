@@ -4,12 +4,7 @@ let state = {
     balance: null,
     income: null,
     expense: null,
-    transactions: [
-        { date: '14-05-2024', type: 'income', category: 'salary', sum: 5000 },
-        { date: '16-05-2024', type: 'expense', category: 'groceries', sum: 200 },
-        { date: '17-05-2024', type: 'expense', category: 'rent', sum: 1100 },
-        { date: '18-05-2024', type: 'income', category: 'salary', sum: 5000 },
-    ],
+    transactions: [],
 };
 
 const balance = document.querySelector('#balance');
@@ -100,14 +95,21 @@ const updateBalance = () => {
 
 const addTransaction = () => {
     addTransactionBtn.addEventListener('click', () => {
-        let transaction = {};
-        transaction.date = form.date.value;
-        transaction.type = form.type.value;
-        transaction.category = form.category.value;
-        transaction.sum = Number(form.sum.value);
+        const transaction = {
+            date: form.date.value,
+            type: form.type.value,
+            category: form.category.value,
+            sum: form.sum.value,
+        };
+
+        for(const value of Object.values(transaction)) {
+            if(!value) {
+                alert('Fill in all fields');
+                return;
+            }
+        }
 
         state.transactions.push(transaction);
-        console.log(state);
         updateBalance();
     });
 }
