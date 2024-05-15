@@ -15,22 +15,34 @@ let state = {
 const balance = document.querySelector('#balance');
 const income = document.querySelector('#income');
 const expense = document.querySelector('#expense');
-const type = document.querySelector('#type');
-const category = document.querySelector('#category');
-const sum = document.querySelector('#sum');
-const date = document.querySelector('#date');
 const addTransactionBtn = document.querySelector('.btn');
 const transactionsTable = document.querySelector('.transactions');
+
+const form = {
+    type: document.querySelector('#type'),
+    category: document.querySelector('#category'),
+    sum: document.querySelector('#sum'),
+    date: document.querySelector('#date'),
+};
 
 const loadData = () => {
     updateBalance();
     addTransaction();
 }
 
+const clearForm = ({ ...form }) => {
+    form.date.value = null;
+    form.type.value = null;
+    form.category.value = null;
+    form.sum.value = null;
+}
+
 const render = () => {
     balance.innerHTML = `$${state.balance}`;
     income.innerHTML = `$${state.income}`;
     expense.innerHTML = `$${state.expense}`;
+
+    clearForm(form);
 
     transactionsTable.innerHTML = '';
     const transactions = state.transactions.length;
@@ -89,10 +101,10 @@ const updateBalance = () => {
 const addTransaction = () => {
     addTransactionBtn.addEventListener('click', () => {
         let transaction = {};
-        transaction.date = date.value;
-        transaction.type = type.value;
-        transaction.category = category.value;
-        transaction.sum = Number(sum.value);
+        transaction.date = form.date.value;
+        transaction.type = form.type.value;
+        transaction.category = form.category.value;
+        transaction.sum = Number(form.sum.value);
 
         state.transactions.push(transaction);
         console.log(state);
