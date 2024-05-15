@@ -1,6 +1,6 @@
 'use strict';
 
-const state = {
+let state = {
     balance: null,
     income: null,
     expense: null,
@@ -15,11 +15,16 @@ const state = {
 const balance = document.querySelector('#balance');
 const income = document.querySelector('#income');
 const expense = document.querySelector('#expense');
+const type = document.querySelector('#type');
+const category = document.querySelector('#category');
+const sum = document.querySelector('#sum');
+const date = document.querySelector('#date');
+const addTransactionBtn = document.querySelector('.btn');
 const transactionsTable = document.querySelector('.transactions');
 
-const loadPage = () => {
+const loadData = () => {
     updateBalance();
-    render();
+    addTransaction();
 }
 
 const render = () => {
@@ -27,6 +32,7 @@ const render = () => {
     income.innerHTML = `$${state.income}`;
     expense.innerHTML = `$${state.expense}`;
 
+    transactionsTable.innerHTML = '';
     const transactions = state.transactions.length;
     for(let i = 0; i < transactions; i++) {
         const transactionElement = document.createElement('tr');
@@ -71,15 +77,28 @@ const updateBalance = () => {
         } else {
             expense += transaction.sum;
         }
-        console.log(income, expense);
     }
     balance = income - expense;
 
     state.balance = balance;
     state.income = income;
     state.expense = expense;
+    render();
 }
 
-loadPage();
+const addTransaction = () => {
+    addTransactionBtn.addEventListener('click', () => {
+        let transaction = {};
+        transaction.date = date.value;
+        transaction.type = type.value;
+        transaction.category = category.value;
+        transaction.sum = Number(sum.value);
 
+        state.transactions.push(transaction);
+        console.log(state);
+        updateBalance();
+    });
+}
+
+loadData();
 
