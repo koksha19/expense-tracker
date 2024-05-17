@@ -65,6 +65,10 @@ const render = () => {
         transactionElement.appendChild(sum);
 
         btn.append('Delete');
+        btn.addEventListener('click', () => {
+            deleteTransaction(transaction);
+            updateBalance();
+        });
         deleteButton.appendChild(btn);
         transactionElement.appendChild(deleteButton);
 
@@ -99,7 +103,7 @@ const addTransaction = () => {
             date: form.date.value,
             type: form.type.value,
             category: form.category.value,
-            sum: form.sum.value,
+            sum: Number(form.sum.value),
         };
 
         for(const value of Object.values(transaction)) {
@@ -112,6 +116,11 @@ const addTransaction = () => {
         state.transactions.push(transaction);
         updateBalance();
     });
+}
+
+const deleteTransaction = (transactionToDelete) => {
+    const transactions = state.transactions;
+    transactions.splice(transactions.indexOf(transactionToDelete) , 1);
 }
 
 loadData();
