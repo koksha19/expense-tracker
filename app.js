@@ -21,6 +21,8 @@ const form = {
 };
 
 const loadData = () => {
+    const currentState = localStorage.getItem('expense-tracker');
+    if(currentState != null) state = JSON.parse(currentState);
     updateBalance();
     addTransaction();
 }
@@ -94,6 +96,9 @@ const updateBalance = () => {
     state.balance = balance;
     state.income = income;
     state.expense = expense;
+
+    localStorage.setItem('expense-tracker', JSON.stringify(state));
+
     render();
 }
 
