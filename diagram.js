@@ -1,30 +1,35 @@
-const ctx = document.getElementById("diagram");
+import { sumsByCategories } from "./app.js";
 
-new Chart(ctx, {
-    type: "doughnut",
-    data: {
-        labels: [
-            "Food",
-            "Entertainment",
-            "Healthcare",
-            "Taxes",
-            "Rent",
-            "Insurance",
-            "Other",
-        ],
-        datasets: [
-            {
-                label: "Expense Categories",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
+const ctx = document.getElementById("diagram").getContext("2d");
+
+let expenseChart;
+
+export function initializeChart(sumsByCategories) {
+    expenseChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: Object.keys(sumsByCategories),
+            datasets: [
+                {
+                    label: "Expense Categories",
+                    data: Object.values(sumsByCategories),
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
             },
         },
-    },
-});
+    });
+}
+
+const updateChart = () => {
+    expenseChart.data.datasets[0].data = Object.values(sumsByCategories);
+    expenseChart.update();
+};
+
+export { updateChart };

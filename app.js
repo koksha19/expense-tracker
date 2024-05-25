@@ -1,11 +1,23 @@
 "use strict";
 
+import {initializeChart, updateChart} from "./diagram.js";
+
 let state = {
     balance: null,
     income: null,
     expense: null,
     transactions: [],
 };
+
+let sumsByCategories = {
+    Food: 0,
+    Entertainment: 0,
+    Healthcare: 0,
+    Taxes: 0,
+    Rent: 0,
+    Insurance: 0,
+    Other: 0,
+}
 
 const balance = document.querySelector("#balance");
 const income = document.querySelector("#income");
@@ -25,6 +37,7 @@ const loadData = () => {
     if (currentState != null) state = JSON.parse(currentState);
     updateBalance();
     addTransaction();
+    initializeChart(sumsByCategories);
 };
 
 const clearForm = ({ ...form }) => {
@@ -111,6 +124,18 @@ const addTransaction = () => {
             sum: Number(form.sum.value),
         };
 
+        const expense = {
+            category: transaction.category,
+            sum: transaction.sum,
+        }
+
+        if (transaction.type === 'expense') {
+            const expenseCategory = expense.category;
+            const expenseSum = expense.sum;
+            sumsByCategories[expenseCategory] += expenseSum;
+            updateChart();
+        }
+
         for (const value of Object.values(transaction)) {
             if (!value) {
                 alert("Fill in all fields");
@@ -129,4 +154,6 @@ const deleteTransaction = (transactionToDelete) => {
 };
 
 loadData();
+
+export { sumsByCategories, state };
 
