@@ -150,7 +150,18 @@ const addTransaction = () => {
 
 const deleteTransaction = (transactionToDelete) => {
     const transactions = state.transactions;
+
+    const expense = {
+        category: transactionToDelete.category,
+        sum: transactionToDelete.sum,
+    }
+
+    if (transactionToDelete.type === 'expense') {
+        sumsByCategories[expense.category] -= expense.sum;
+    }
+
     transactions.splice(transactions.indexOf(transactionToDelete), 1);
+    updateChart();
 };
 
 loadData();
