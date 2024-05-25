@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 let state = {
     balance: null,
@@ -7,32 +7,32 @@ let state = {
     transactions: [],
 };
 
-const balance = document.querySelector('#balance');
-const income = document.querySelector('#income');
-const expense = document.querySelector('#expense');
-const addTransactionBtn = document.querySelector('.btn');
-const transactionsTable = document.querySelector('.transactions');
+const balance = document.querySelector("#balance");
+const income = document.querySelector("#income");
+const expense = document.querySelector("#expense");
+const addTransactionBtn = document.querySelector(".btn");
+const transactionsTable = document.querySelector(".transactions");
 
 const form = {
-    type: document.querySelector('#type'),
-    category: document.querySelector('#category'),
-    sum: document.querySelector('#sum'),
-    date: document.querySelector('#date'),
+    type: document.querySelector("#type"),
+    category: document.querySelector("#category"),
+    sum: document.querySelector("#sum"),
+    date: document.querySelector("#date"),
 };
 
 const loadData = () => {
-    const currentState = localStorage.getItem('expense-tracker');
-    if(currentState != null) state = JSON.parse(currentState);
+    const currentState = localStorage.getItem("expense-tracker");
+    if (currentState != null) state = JSON.parse(currentState);
     updateBalance();
     addTransaction();
-}
+};
 
 const clearForm = ({ ...form }) => {
     form.date.value = null;
     form.type.value = null;
     form.category.value = null;
     form.sum.value = null;
-}
+};
 
 const render = () => {
     balance.innerHTML = `$${state.balance}`;
@@ -41,16 +41,16 @@ const render = () => {
 
     clearForm(form);
 
-    transactionsTable.innerHTML = '';
+    transactionsTable.innerHTML = "";
     const transactions = state.transactions.length;
-    for(let i = 0; i < transactions; i++) {
-        const transactionElement = document.createElement('tr');
-        const date = document.createElement('td');
-        const type = document.createElement('td');
-        const category = document.createElement('td');
-        const sum = document.createElement('td');
-        const deleteButton = document.createElement('td');
-        const btn = document.createElement('button');
+    for (let i = 0; i < transactions; i++) {
+        const transactionElement = document.createElement("tr");
+        const date = document.createElement("td");
+        const type = document.createElement("td");
+        const category = document.createElement("td");
+        const sum = document.createElement("td");
+        const deleteButton = document.createElement("td");
+        const btn = document.createElement("button");
 
         const transaction = state.transactions[i];
 
@@ -66,8 +66,8 @@ const render = () => {
         sum.append(transaction.sum);
         transactionElement.appendChild(sum);
 
-        btn.append('Delete');
-        btn.addEventListener('click', () => {
+        btn.append("Delete");
+        btn.addEventListener("click", () => {
             deleteTransaction(transaction);
             updateBalance();
         });
@@ -76,16 +76,16 @@ const render = () => {
 
         transactionsTable.appendChild(transactionElement);
     }
-}
+};
 const updateBalance = () => {
     let balance;
     let income = 0;
     let expense = 0;
 
     const transactions = state.transactions.length;
-    for(let i = 0; i < transactions; i++) {
+    for (let i = 0; i < transactions; i++) {
         const transaction = state.transactions[i];
-        if(transaction.type === 'income') {
+        if (transaction.type === "income") {
             income += transaction.sum;
         } else {
             expense += transaction.sum;
@@ -97,13 +97,13 @@ const updateBalance = () => {
     state.income = income;
     state.expense = expense;
 
-    localStorage.setItem('expense-tracker', JSON.stringify(state));
+    localStorage.setItem("expense-tracker", JSON.stringify(state));
 
     render();
-}
+};
 
 const addTransaction = () => {
-    addTransactionBtn.addEventListener('click', () => {
+    addTransactionBtn.addEventListener("click", () => {
         const transaction = {
             date: form.date.value,
             type: form.type.value,
@@ -111,9 +111,9 @@ const addTransaction = () => {
             sum: Number(form.sum.value),
         };
 
-        for(const value of Object.values(transaction)) {
-            if(!value) {
-                alert('Fill in all fields');
+        for (const value of Object.values(transaction)) {
+            if (!value) {
+                alert("Fill in all fields");
                 return;
             }
         }
@@ -121,12 +121,12 @@ const addTransaction = () => {
         state.transactions.push(transaction);
         updateBalance();
     });
-}
+};
 
 const deleteTransaction = (transactionToDelete) => {
     const transactions = state.transactions;
-    transactions.splice(transactions.indexOf(transactionToDelete) , 1);
-}
+    transactions.splice(transactions.indexOf(transactionToDelete), 1);
+};
 
 loadData();
 
