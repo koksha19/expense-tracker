@@ -14,9 +14,16 @@ body {
 
 .article {
     max-width: 400px;
-    margin: auto;
+    margin: 0;
     background-color: #fff;
     box-shadow: 0 3px 5px #7a70cb;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
 }
 
 header {
@@ -73,6 +80,12 @@ button {
     font-size: x-large;
     background-color: #a69ddc;
     font-weight: 600;
+}
+
+.diagram {
+    border: 1px solid #8a76c5;
+    background: #a69ddc;
+    box-shadow: 0 0 16px #7a70cb;
 }
 
 .table {
