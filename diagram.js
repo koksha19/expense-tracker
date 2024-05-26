@@ -4,7 +4,7 @@ const ctx = document.getElementById("diagram").getContext("2d");
 
 let expenseChart;
 
-export function initializeChart(sumsByCategories) {
+const initializeChart = (sumsByCategories) => {
     expenseChart = new Chart(ctx, {
         type: "doughnut",
         data: {
@@ -25,11 +25,11 @@ export function initializeChart(sumsByCategories) {
             },
         },
     });
-}
+};
 
 const updateChart = () => {
     expenseChart.data.datasets[0].data = Object.values(sumsByCategories);
     expenseChart.update();
 };
 
-export { updateChart };
+export { updateChart, initializeChart };
