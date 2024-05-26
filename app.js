@@ -57,8 +57,8 @@ const render = () => {
     clearForm(form);
 
     transactionsTable.innerHTML = "";
-    const transactions = state.transactions.length;
-    for (let i = 0; i < transactions; i++) {
+    const transactions = state.transactions
+    for (const transaction of transactions) {
         const transactionElement = document.createElement("tr");
         const date = document.createElement("td");
         const type = document.createElement("td");
@@ -66,8 +66,6 @@ const render = () => {
         const sum = document.createElement("td");
         const deleteButton = document.createElement("td");
         const btn = document.createElement("button");
-
-        const transaction = state.transactions[i];
 
         date.append(transaction.date);
         transactionElement.appendChild(date);
@@ -97,9 +95,8 @@ const updateBalance = () => {
     let income = 0;
     let expense = 0;
 
-    const transactions = state.transactions.length;
-    for (let i = 0; i < transactions; i++) {
-        const transaction = state.transactions[i];
+    const transactions = state.transactions
+    for (const transaction of transactions) {
         if (transaction.type === "income") {
             income += transaction.sum;
         } else {
