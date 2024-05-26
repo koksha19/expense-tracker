@@ -34,7 +34,9 @@ const form = {
 
 const loadData = () => {
     const currentState = localStorage.getItem("expense-tracker");
+    const currentDiagram = localStorage.getItem("expense-diagram");
     if (currentState != null) state = JSON.parse(currentState);
+    if (currentDiagram != null) sumsByCategories = JSON.parse(currentDiagram);
     updateBalance();
     addTransaction();
     initializeChart(sumsByCategories);
@@ -111,6 +113,7 @@ const updateBalance = () => {
     state.expense = expense;
 
     localStorage.setItem("expense-tracker", JSON.stringify(state));
+    localStorage.setItem("expense-diagram", JSON.stringify(sumsByCategories));
 
     render();
 };
