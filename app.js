@@ -17,7 +17,7 @@ let sumsByCategories = {
     Rent: 0,
     Insurance: 0,
     Other: 0,
-}
+};
 
 const balance = document.querySelector("#balance");
 const income = document.querySelector("#income");
@@ -104,6 +104,10 @@ const updateBalance = () => {
         }
     }
     balance = income - expense;
+    if (balance < 0) {
+        alert('Not enough money');
+        return;
+    }
 
     state.balance = balance;
     state.income = income;
