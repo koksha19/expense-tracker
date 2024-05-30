@@ -1,3 +1,5 @@
+'use strict';
+
 import { sumsByCategories } from "./app.js";
 
 const ctx = document.getElementById("diagram").getContext("2d");
