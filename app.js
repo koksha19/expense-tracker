@@ -1,6 +1,6 @@
 "use strict";
 
-import {initializeChart, updateChart} from "./diagram.js";
+import { initializeChart, updateChart } from "./diagram.js";
 
 let state = {
     balance: null,
